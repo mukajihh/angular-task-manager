@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+
+import { Task } from './service/service.task'
 
 
 import { AppComponent } from './app.component';
@@ -16,9 +20,10 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ Task ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

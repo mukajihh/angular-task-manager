@@ -11,12 +11,13 @@ header {
       line-height: 36px;
       font-size: 24px;
       color: #727D89;
-      padding: 0px 10px;
-
-      &.active {
-        background: #6A859A;
-        color: #fff;
-      }
+      padding: 0px 5px;
+    }
+    
+    &.search .search,
+    &.add .add {
+      background: #6A859A;
+      color: #fff;
     }
 
     #input-text {
@@ -43,11 +44,13 @@ header {
         }
       }
 
-      .add-task {
+      .input-icon {
         position: absolute;
         top: 16px;
         right: 16px;
         color: #C9C9C9;
+
+        &.fa-search { top: 15px }
       }
 
     }

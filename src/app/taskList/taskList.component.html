@@ -1,13 +1,8 @@
 <div id="task-container">
   <ul class="task-list">
-    <li class="task">
-      <input type="checkbox">
-      <span>It reads data from local storage</span>
-      <i class="fa fa-close" aria-hidden="true"></i>
-    </li>
-    <li class="task done">
-      <input type="checkbox">
-      <span>Follow me for more</span>
+    <li *ngFor="let task of taskList" class="task">
+      <input type="checkbox" checked="{{task.stats}}">
+      <span>{{task.desc}}</span>
       <i class="fa fa-close" aria-hidden="true"></i>
     </li>
   </ul>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../service/service.task';
 
 @Component({
   moduleId: module.id,
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./taskList.component.scss']
 })
 
-export class TaskListComponent {}
+export class TaskListComponent implements OnInit{
+  @Input() taskList: Array<Task>;
+
+  ngOnInit() {
+    this.taskList = new Array<Task>();
+  }
+}
