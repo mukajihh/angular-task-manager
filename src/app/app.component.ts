@@ -1,17 +1,41 @@
-import { Component, EventEmitter } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
-import { TaskListComponent } from './taskList/taskList.component';
+import { Component } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
+import { SearchPipe } from './pipe/search.pipe';
+
+import { Task } from './service/service.task';
 
 @Component({
-  providers: [TaskListComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 
 export class AppComponent{
-  onNotify(message:string):void {
-    alert(message);
+
+  private headerType: string = 'add';
+  public taskList: Array<Task> = [];
+
+  public changeTab(event): void {
+    switch (event) {
+      case "add":
+        this.headerType = 'add';
+        break;
+
+      case "search":
+        this.headerType = 'search';
+        break;
+    }
+  }
+
+  public addTask(desc: string): void {
+    this.taskList.push(new Task(desc));
+  }
+
+  public removeTask(task:Task): void {
+    this.taskList.splice(this.taskList.indexOf(task), 1);
+  }
+
+  public makeTaskDone(task: Task): void {
+    this.taskList[this.taskList.indexOf(task)].stats = 'checked';
   }
 }

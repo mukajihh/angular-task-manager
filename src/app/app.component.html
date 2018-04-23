@@ -1,4 +1,42 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<task-header (notify)='onNotify($event)'></task-header>
-<task-list></task-list>
+<header>
+  <div id="header-left" class={{headerType}}>
+
+    <div class="add" (click)="changeTab('add')">
+      <i class="add fa fa-plus" aria-hidden="true"></i>
+    </div>
+
+    <div class="search" (click)="changeTab('search')">
+      <i class="search fa fa-search" aria-hidden="true"></i>
+    </div>
+
+    <div id="input-text" [ngClass]="{'active' : headerType === 'add'}" >
+      <input type="text" placeholder="Add a task..." [(ngModel)]='description'>
+      <i class="input-icon fa fa-plus" aria-hidden="true" (click)='addTask(description)'></i>
+    </div>
+
+    <div id="input-text" [ngClass]="{'active' : headerType === 'search'}">
+      <input type="text" placeholder="Search a task..." [(ngModel)]='query'>
+      <i class="input-icon fa fa-search" aria-hidden="true"></i>
+    </div>
+
+  </div>
+  <div id="header-right">
+    <div class="user-img"></div>
+    <div class="user-text">
+      <span class="user-name">Murillo Kenji</span>
+      <span class="user-stats">Logged in</span>
+    </div>
+  </div>
+</header>
+
+<div id="task-container">
+  <ul class="task-list">
+    <li *ngFor="let task of taskList | search: query" [ngClass]="{'done' : task.stats === 'checked'}" class="task">
+      <input type="checkbox" checked="{{task.stats}}" [disabled]="task.stats === 'checked'" (change)='makeTaskDone(task)'>
+      <span>{{task.desc}}</span>
+      <i class="fa fa-close" aria-hidden="true" (click)='removeTask(task)'></i>
+    </li>
+  </ul>
+</div>
 <footer></footer>

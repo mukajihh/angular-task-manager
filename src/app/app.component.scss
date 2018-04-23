@@ -1,1 +1,121 @@
 body { margin: 0 }
+
+header {
+  background: #475D6E;
+  min-height: 40px;
+  width: 100%;
+
+  #header-left {
+    position: relative;
+    .search,
+    .add {
+      display: inline-block;
+      line-height: 36px;
+      font-size: 24px;
+      color: #727D89;
+      padding: 0px 5px;
+    }
+
+    &.search .search,
+    &.add .add {
+      background: #6A859A;
+      color: #fff;
+    }
+
+    #input-text {
+      background: #6A859A;
+      padding: 10px;
+      position: relative;
+      display: none;
+
+      &.active { display: block }
+
+      input {
+        width: 100%;
+        padding: 5px;
+        font-size: 12px;
+
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: #c9c9c9;
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+          color: #c9c9c9;
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+          color: #c9c9c9;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: #c9c9c9;
+        }
+      }
+
+      .input-icon {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        color: #C9C9C9;
+
+        &.fa-search { top: 15px }
+      }
+
+    }
+  }
+
+  #header-right {
+    left: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .user-img {
+      background-image: url('http://media.licdn.com/dms/image/C5603AQHOHoJwx-le7Q/profile-displayphoto-shrink_200_200/0?e=1529539200&v=beta&t=0R3zoFxLz9MHjyXLFJqyOp6rlg06wIvJqYDoaMb6Rp8');
+      background-size: 30px 30px;
+      border-radius: 15px;
+      float: right;
+      height: 30px;
+      margin: 3px 10px;
+      width: 30px;
+    }
+
+    .user-text {
+      float: right;
+      color: #9EA1A4;
+      font-size: 10px;
+      margin: 3px 0;
+
+      .user-name {
+        display: block;
+      }
+    }
+  }
+}
+
+#task-container .task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .task {
+    border-bottom: 1px solid #EDE9E9;
+    padding: 7px 10px;
+
+    & > * {
+      display: inline-block;
+      line-height: 25px;
+    }
+
+    input[type='checkbox'] {
+      float: left;
+      margin: 7px 5px;
+    }
+
+    span { font-size: 12px }
+
+    i.fa-close {
+      color: #C9C9C9;
+      float: right;
+    }
+
+    &.done span { color: #c9c9c9 }
+  }
+}
