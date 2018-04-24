@@ -11,7 +11,7 @@
     </div>
 
     <div id="input-text" [ngClass]="{'active' : headerType === 'add'}" >
-      <input type="text" placeholder="Add a task..." [(ngModel)]='description'>
+      <input type="text" placeholder="Add a task..." [(ngModel)]='description' (keyup.enter)='addTask(description)'>
       <i class="input-icon fa fa-plus" aria-hidden="true" (click)='addTask(description)'></i>
     </div>
 
@@ -32,8 +32,8 @@
 
 <div id="task-container">
   <ul class="task-list">
-    <li *ngFor="let task of taskList | search: query" [ngClass]="{'done' : task.stats === 'checked'}" class="task">
-      <input type="checkbox" checked="{{task.stats}}" [disabled]="task.stats === 'checked'" (change)='makeTaskDone(task)'>
+    <li *ngFor="let task of taskList | search: query | orderBy: {property: stats}" [ngClass]="{'done' : task.stats === 'done'}" class="task">
+      <input type="checkbox" [checked]="task.stats === 'done'" [disabled]="task.stats === 'done'" (change)='makeTaskDone(task)'>
       <span>{{task.desc}}</span>
       <i class="fa fa-close" aria-hidden="true" (click)='removeTask(task)'></i>
     </li>

@@ -7,6 +7,6 @@ export class Task {
 
   constructor(desc: string) {
     this.desc = desc;
-    this.stats = '';
+    this.stats = 'doing';
   }
 }
