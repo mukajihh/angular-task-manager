@@ -5,13 +5,13 @@ import { Task } from '../class/class.task'
   name: 'orderBy'
 })
 export class CheckPipe implements PipeTransform {
-  transform(items: Task[], args?: any): Task[] {
-    console.log(items);
+  property: string = 'stats';
+  public transform(items: Task[]): Task[] {
     return items.sort((a, b) => {
-    	if(a[args.property] < b[args.property]){
+      if(a[this.property] < b[this.property]){
         return -1;
       }
-      else if( a[args.property] > b[args.property]){
+      else if( a[this.property] > b[this.property]){
         return 1;
       }
       else{

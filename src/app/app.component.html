@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!--Header Start-->
 <header>
   <div id="header-left" class={{headerType}}>
 
@@ -29,17 +29,22 @@
     </div>
   </div>
 </header>
+<!--Header End-->
 
+<!--TaskList Container Start-->
 <div id="task-container">
   <ul class="task-list">
-    <li *ngFor="let task of taskList | search: query | orderBy: {property: stats}" [ngClass]="{'done' : task.stats === 'done'}" class="task">
+    <li *ngFor="let task of taskList | search: query | orderBy" [ngClass]="{'done' : task.stats === 'done'}" class="task">
       <input type="checkbox" [checked]="task.stats === 'done'" [disabled]="task.stats === 'done'" (change)='makeTaskDone(task)'>
       <span>{{task.desc}}</span>
       <i class="fa fa-close" aria-hidden="true" (click)='removeTask(task)'></i>
     </li>
   </ul>
 </div>
+<!--TaskList Container End-->
 
+<!--Footer Start-->
 <div class="footer">
   <span>You have {{taskCount}} total items. {{taskDoingCount}} undone items and {{taskDoneCount}} done items.</span>
 </div>
+<!--Footer End-->
